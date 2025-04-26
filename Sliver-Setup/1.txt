@@ -1,0 +1,2 @@
+
+$o=[Ref].Assembly.GetTypes();Foreach($x in $o) {if ($x.Name -like "*iUtils") {$l=$x}};$p=$l.GetFields('NonPublic,Static')
