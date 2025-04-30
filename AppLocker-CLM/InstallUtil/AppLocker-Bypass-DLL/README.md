@@ -1,4 +1,4 @@
-# Reverse Shell CLM Bypass with Meterpreter DLL
+# Reverse Shell AppLocker Bypass with Meterpreter DLL
 A .NET installation utility used for registering .NET assemblies can be used and reference the RunInstaller component to trigger the malicious payload that is not found in the 'main' call. 
 
 Compile the csharp binary in Visual Studio and transfer to victim host with certutil. 
