@@ -4,9 +4,7 @@
 
 Microsoft Build Engine `msbuild.exe` is used to compile and build applications from XML-Based project files in the form of `.csproj`, and `.vbproj`.&#x20;
 
-{% hint style="info" %}
-In most scenarios, the payload will be .xml but can be renamed to .csproj to ensure exeuction.&#x20;
-{% endhint %}
+ > In most scenarios, the payload will be .xml but can be renamed to .csproj to ensure exeuction.&#x20;
 
 ```bash
 # utility location (32-bit)

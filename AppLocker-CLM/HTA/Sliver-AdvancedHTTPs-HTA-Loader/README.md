@@ -8,11 +8,9 @@ Modify the runner.xml and change the IP address and runner.ps1 (or .txt) which w
 ### Encoding
 The xml requires base64 encoding and placed into the runner.hta file within the powershell command to execute the mshta file.
 
-{% code overflow="wrap" %}
 ```bash
 PS Z:\ToolLibrary\AppLocker-CLM\HTA\Sliver-AdvancedHTTPs-HTA-Loader> .\HTA-powershellEncoder.ps1
 ```
-{% endcode %}
 
 Copy and paste the output from the encoded.txt file into the runner.hta file.
 

