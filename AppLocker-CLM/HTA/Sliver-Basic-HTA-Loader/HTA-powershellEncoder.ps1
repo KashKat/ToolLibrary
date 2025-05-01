@@ -1,5 +1,5 @@
 # Read the contents of the PowerShell script as text
-$scriptContent = Get-Content -Path ".\sliver.xml" -Raw
+$scriptContent = Get-Content -Path ".\runner.xml" -Raw
 
 # Convert the string to bytes (UTF8 encoding)
 $bytes = [System.Text.Encoding]::UTF8.GetBytes($scriptContent)

