@@ -1,3 +1,5 @@
+# Ligolo.ps1 is taken from https://github.com/Extravenger/OSEPlayground/blob/main/04%20-%20Tunneling/ligolo.ps1
+
 # Check that we are running as 64bit process
 if ([System.IntPtr]::Size -ne 8) {
     Write-Error "This script must be run as a 64-bit process."

@@ -1,6 +1,9 @@
 # Basic Sliver Beacon
 Setup basic stager and listener on Sliver C2
 
+## References
+All content for Sliver shell code runner from https://github.com/beauknowstech/OSEP-Everything/tree/main/AMSI
+
 ## Setup for x86 windows host
 ```bash
 # Setup profile for staged payload with arch type as x86

