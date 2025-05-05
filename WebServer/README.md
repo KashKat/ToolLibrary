@@ -8,6 +8,7 @@ This version supports:
 - Optional redirect rules based on URL path prefixes
 - Logging of query parameters like `username` or `is64ps` (for payload staging context)
 - JSON-based configuration for ease of reuse
+- Works with bitsadmin which fails when using python3 -m http.server (sort of a pain)
 
 ---
 
@@ -40,6 +41,16 @@ go build -o GoHttpServer GoHttpServer.go
 
 # Run without compiling
 go run GoHttpServer.go -config config.json
+
+# Run with arguments instead of -config
+go run GoHttpServer.go \
+  -port 443 \
+  -use_https=true \
+  -cert_file=server.crt \
+  -key_file=server.key \
+  -base_dir=./Challenge01 \
+  -redirect="/runner.ps1=./Sliver/runner.ps1" \
+  -redirect="/t/=./Challenge01/payloads"
 ```
 
 HTTPS requires a valid cert.pem and key.pem file, can generate self-signed pair with: 
@@ -90,3 +101,15 @@ Example output of request to http://10.10.10.1/runner.ps1 with an active redirec
     └── Ligolo-NG/
     └── PrintSpooler/
 ```
+
+## Argument List
+```
+|Flag |	Description |
+| --- | --- |
+| -port |	Port number to run the server on (e.g. 8080) |
+| -use_https |	true or false to enable/disable HTTPS |
+| -cert_file |	Path to TLS certificate (used if HTTPS is on) |
+| -key_file |	Path to TLS private key (used if HTTPS is on) |
+| -base_dir |	Root directory to serve when accessing / |
+```
+-redirect	Redirect mapping from URI to filesystem path
