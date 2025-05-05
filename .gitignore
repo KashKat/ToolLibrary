@@ -22,3 +22,5 @@ obj/
 secrets.txt
 *.secret
 *.env
+*.pem
+*.key

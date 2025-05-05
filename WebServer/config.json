@@ -1,0 +1,12 @@
+{
+  "port": 80,
+  "use_https": false,
+  "cert_file": "server.crt",
+  "key_file": "server.key",
+  "base_dir": "./Challenge05",
+  "redirects": {
+    "/runner.ps1": "./sliver/runner.ps1",
+    "/p/": "./Challenge05/payloads",
+    "/t/": "./tools"
+  }
+}
