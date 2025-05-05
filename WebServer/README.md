@@ -103,7 +103,6 @@ Example output of request to http://10.10.10.1/runner.ps1 with an active redirec
 ```
 
 ## Argument List
-```
 |Flag |	Description |
 | --- | --- |
 | -port |	Port number to run the server on (e.g. 8080) |
@@ -111,5 +110,5 @@ Example output of request to http://10.10.10.1/runner.ps1 with an active redirec
 | -cert_file |	Path to TLS certificate (used if HTTPS is on) |
 | -key_file |	Path to TLS private key (used if HTTPS is on) |
 | -base_dir |	Root directory to serve when accessing / |
-```
--redirect	Redirect mapping from URI to filesystem path
+| -redirect | Redirect mapping from URI to filesystem path |
+
